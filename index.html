@@ -1,78 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base target="_top">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BarFlow - Smart Bar Bending Schedules</title>
-<meta name="description" content="BarFlow: bar bending schedules in Excel (BS 8666) with shape drawings, DXF export, English / Arabic and mm / ft-in.">
+<title>BarFlow License Server</title>
 <style>
-  :root { --navy:#12305a; --orange:#f28c28; --bg:#f4f6fa; --ink:#1b2430; --mute:#5e6b7d; --line:#dde3ec; }
+  :root { --navy:#12305a; --orange:#f28c28; --bg:#f4f6fa; --card:#fff; --ink:#1b2430; --mute:#6b7789; --line:#dde3ec; --ok:#1e8e5a; --bad:#c0392b; }
   * { box-sizing:border-box; }
-  body { margin:0; font:16px/1.6 "Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); background:var(--bg); }
-  header { background:var(--navy); color:#fff; border-bottom:5px solid var(--orange); padding:44px 20px 40px; text-align:center; }
-  header h1 { margin:0; font-size:44px; letter-spacing:.5px; } header h1 span { color:var(--orange); }
-  header p { margin:8px 0 0; color:#c9d5ea; font-size:18px; }
-  main { max-width:900px; margin:0 auto; padding:24px 16px 56px; }
-  .btn { display:inline-block; background:var(--orange); color:#fff; text-decoration:none; font-weight:700; padding:14px 30px; border-radius:10px; font-size:18px; margin:22px 8px 6px; }
-  .btn.alt { background:var(--navy); }
-  .center { text-align:center; }
-  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
-  h2 { color:var(--navy); margin:0 0 10px; font-size:22px; border-left:5px solid var(--orange); padding-left:10px; }
-  ul { margin:8px 0 0; padding-left:22px; } li { margin:4px 0; }
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; } @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
-  .note { color:var(--mute); font-size:14px; }
-  [dir=rtl] h2 { border-left:0; padding-left:0; border-right:5px solid var(--orange); padding-right:10px; } [dir=rtl] ul { padding-left:0; padding-right:22px; }
-  footer { text-align:center; color:var(--mute); font-size:14px; padding:0 16px 40px; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 "Segoe UI",Roboto,Arial,sans-serif; }
+  header { background:var(--navy); color:#fff; padding:16px 16px 14px; border-bottom:4px solid var(--orange); }
+  header h1 { margin:0; font-size:22px; letter-spacing:.3px; } header h1 span { color:var(--orange); }
+  header p { margin:2px 0 0; color:#c9d5ea; font-size:13px; }
+  main { max-width:920px; margin:0 auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px; }
+  h2 { margin:0 0 12px; font-size:16px; color:var(--navy); }
+  label { display:block; font-size:12px; font-weight:600; color:var(--mute); margin:10px 0 4px; text-transform:uppercase; letter-spacing:.4px; }
+  input, select { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; }
+  input:focus, select:focus { outline:2px solid var(--orange); border-color:transparent; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px) { .row { grid-template-columns:1fr; } }
+  button { border:0; border-radius:8px; padding:10px 16px; font:inherit; font-weight:600; cursor:pointer; background:var(--navy); color:#fff; }
+  button.primary { background:var(--orange); } button.ghost { background:#e9eef6; color:var(--navy); }
+  button.danger { background:var(--bad); } button:disabled { opacity:.55; cursor:default; }
+  .actions { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .msg { margin-top:12px; padding:10px 12px; border-radius:8px; font-size:14px; display:none; }
+  .msg.ok { display:block; background:#e6f5ee; color:#12603c; } .msg.err { display:block; background:#fdecea; color:#8f2a20; }
+  textarea { width:100%; min-height:96px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:13px/1.4 Consolas,monospace; word-break:break-all; }
+  table { width:100%; border-collapse:collapse; font-size:13px; } th,td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.4px; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:700; }
+  .tag.active { background:#e6f5ee; color:var(--ok); } .tag.revoked { background:#fdecea; color:var(--bad); }
+  .scroll { overflow-x:auto; }
+  footer { text-align:center; color:var(--mute); font-size:12px; padding:8px 0 24px; }
 </style>
 </head>
 <body>
 <header>
-  <h1>Bar<span>Flow</span></h1>
-  <p>Smart Bar Bending Schedules for Excel</p>
+  <h1>Bar<span>Flow</span> &nbsp;License Server</h1>
+  <p>Create, list and revoke licence codes</p>
 </header>
 <main>
-  <div class="center">
-    <a class="btn" href="BarFlow.zip" download>Download BarFlow (free version)</a>
-    <a class="btn alt" href="mailto:barflowapplication@gmail.com?subject=BarFlow%20license%20request">Request a license</a>
-    <p class="note">Windows + Microsoft Excel 2016 or later. After downloading: unzip, open the file and press <b>Enable Content</b>.</p>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h2>What it does</h2>
-      <ul>
-        <li>Bar bending schedules per BS 8666 with real shape drawings</li>
-        <li>Automatic cutting length, total number and weight</li>
-        <li>Millimetres or feet-inches (lb), English or Arabic</li>
-        <li>Export the schedule to DXF for AutoCAD</li>
-        <li>Print to A4 with page numbers</li>
-        <li>Cutting list export to Excel</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2>Free version</h2>
-      <ul>
-        <li>Shapes library, Settings and License windows</li>
-        <li>Sample codes <b>100</b>, <b>201</b> and <b>500</b></li>
-        <li>Printing, DXF export and Optimize unlock with a license</li>
-        <li>Licenses are tied to one computer and have an expiry date</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" dir="rtl" lang="ar">
-    <h2>نبذة بالعربية</h2>
-    <p>BarFlow برنامج على Excel لجداول تفريد الحديد (BS 8666) مع رسم الأشكال، وحساب الأطوال والأوزان تلقائياً، وتصدير DXF لبرنامج AutoCAD، وطباعة A4، ويدعم العربية والإنجليزية والوحدات mm أو القدم-إنش. النسخة المجانية تتيح الأكواد 100 و201 و500 كمثال؛ لبقية الميزات اطلب رخصة على البريد أدناه.</p>
+  <div class="card">
+    <h2>Admin PIN</h2>
+    <input id="pin" type="password" placeholder="Enter your admin PIN" autocomplete="current-password">
+    <div class="actions"><button class="ghost" onclick="loadList(); loadListCP(true)">Unlock &amp; load licences</button></div>
+    <div id="pinMsg" class="msg"></div>
   </div>
 
   <div class="card">
-    <h2>Important</h2>
-    <ul>
-      <li>The program may contain errors; always check the results before use on site.</li>
-      <li>Your antivirus may warn about any Excel file that contains macros. Only download BarFlow from this page.</li>
-    </ul>
+    <h2>1) BarFlow (BBS) license &mdash; valid for a period</h2>
+    <div class="row">
+      <div><label for="name">Issued to (customer name)</label><input id="name" placeholder="Customer or company name"></div>
+      <div><label for="cid">Computer ID (from the customer)</label><input id="cid" placeholder="ABCD-1234-EF56-7890" maxlength="19"></div>
+    </div>
+    <div class="row">
+      <div><label for="days">Valid for (days)</label><input id="days" type="number" min="1" max="3660" value="365"></div>
+      <div><label for="exp">or fixed expiry date (optional)</label><input id="exp" type="date"></div>
+    </div>
+    <div class="row">
+      <div><label for="type">Type</label><select id="type"><option>STD</option><option>PRO</option><option>TRIAL</option></select></div>
+      <div><label for="product">Sold with Cutting Plan?</label><select id="product" onchange="toggleBundle()">
+        <option value="BBS">BBS only</option>
+        <option value="ALL">BBS + Cutting Plan (customer bought both)</option>
+      </select></div>
+    </div>
+    <div class="row" id="bundleRow" style="display:none">
+      <div><label for="bundleAttempts">Cutting Plan &mdash; number of runs allowed</label><input id="bundleAttempts" type="number" min="1" max="100000" value="100"></div>
+      <div><label for="bundleType">Cutting Plan &mdash; type</label><select id="bundleType"><option>STD</option><option>PRO</option><option>TRIAL</option></select></div>
+    </div>
+    <p id="bundleNote" style="margin:6px 0 0;font-size:12px;color:var(--mute)">Selecting "BBS + Cutting Plan" generates <b>two separate codes</b> in one click
+      (each product checks its own code independently -- there is no single code that unlocks both). Give the customer both codes; each is pasted into
+      that program's own License window.</p>
+    <div class="actions"><button class="primary" id="genBtn" onclick="generate()">Generate licence code(s)</button></div>
+    <div id="genMsg" class="msg"></div>
+    <div id="result" style="display:none;margin-top:12px">
+      <label for="token">BBS licence code (send this to the customer)</label>
+      <textarea id="token" readonly onclick="this.select()"></textarea>
+      <div class="actions"><button class="ghost" onclick="copyToken()">Copy BBS code</button></div>
+    </div>
+    <div id="bundleResult" style="display:none;margin-top:12px">
+      <label for="bundleToken">Cutting Plan licence code (send this too)</label>
+      <textarea id="bundleToken" readonly onclick="this.select()"></textarea>
+      <div class="actions"><button class="ghost" onclick="copyTokenBundle()">Copy Cutting Plan code</button></div>
+    </div>
   </div>
+
+  <div class="card">
+    <h2>Issued BBS licences</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Serial</th><th>Name</th><th>Computer ID</th><th>Product</th><th>Issued</th><th>Expiry</th><th>Status</th><th></th></tr></thead>
+      <tbody id="rows"><tr><td colspan="8" style="color:var(--mute)">Enter the PIN and press "Unlock &amp; load licences".</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>2) Cutting Plan license &mdash; valid for a number of runs</h2>
+    <div class="row">
+      <div><label for="cpName">Issued to (customer name)</label><input id="cpName" placeholder="Customer or company name"></div>
+      <div><label for="cpCid">Computer ID (from the customer)</label><input id="cpCid" placeholder="ABCD-1234-EF56-7890" maxlength="19"></div>
+    </div>
+    <div class="row">
+      <div><label for="cpAttempts">Number of runs allowed</label><input id="cpAttempts" type="number" min="1" max="100000" value="100"></div>
+      <div><label for="cpType">Type</label><select id="cpType"><option>STD</option><option>PRO</option><option>TRIAL</option></select></div>
+    </div>
+    <div class="actions"><button class="primary" id="cpGenBtn" onclick="generateCP()">Generate Cutting Plan licence code</button></div>
+    <div id="cpGenMsg" class="msg"></div>
+    <div id="cpResult" style="display:none;margin-top:12px">
+      <label for="cpToken">Licence code (send this to the customer)</label>
+      <textarea id="cpToken" readonly onclick="this.select()"></textarea>
+      <div class="actions"><button class="ghost" onclick="copyTokenCP()">Copy code</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Issued Cutting Plan licences</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Serial</th><th>Name</th><th>Computer ID</th><th>Runs allowed</th><th>Issued</th><th>Status</th><th></th></tr></thead>
+      <tbody id="cpRows"><tr><td colspan="7" style="color:var(--mute)">Enter the PIN and press "Unlock &amp; load licences".</td></tr></tbody>
+    </table></div>
+  </div>
+  <footer>BarFlow &middot; barflowapplication@gmail.com</footer>
 </main>
-<footer>BarFlow &middot; <a href="mailto:barflowapplication@gmail.com">barflowapplication@gmail.com</a></footer>
+
+<script>
+  var $ = function (id) { return document.getElementById(id); };
+  function show(id, cls, text) { var e = $(id); e.className = 'msg ' + cls; e.textContent = text; }
+  function clearMsg(id) { $(id).className = 'msg'; }
+  function pin() { return $('pin').value; }
+  function fail(id) { return function (err) { show(id, 'err', (err && err.message) ? err.message.replace(/^Error:\s*/, '') : String(err)); $('genBtn').disabled = false; }; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function fmt(d) { d = String(d); return d.length === 8 ? d.substr(0,4) + '-' + d.substr(4,2) + '-' + d.substr(6,2) : d; }
+
+  $('cid').addEventListener('input', function () {
+    var v = this.value.toUpperCase().replace(/[^0-9A-F]/g, '').substr(0, 16);
+    this.value = v.replace(/(.{4})(?=.)/g, '$1-');
+  });
+
+  function toggleBundle() {
+    var isBundle = $('product').value === 'ALL';
+    $('bundleRow').style.display = isBundle ? 'grid' : 'none';
+    $('bundleNote').style.display = isBundle ? 'block' : 'none';
+    $('genBtn').textContent = isBundle ? 'Generate both licence codes' : 'Generate BBS licence code';
+  }
+  toggleBundle();
+
+  function generate() {
+    clearMsg('genMsg'); $('result').style.display = 'none'; $('bundleResult').style.display = 'none'; $('genBtn').disabled = true;
+    var isBundle = $('product').value === 'ALL';
+    google.script.run.withSuccessHandler(function (r) {
+      $('token').value = r.token; $('result').style.display = 'block';
+      if (!isBundle) {
+        $('genBtn').disabled = false;
+        show('genMsg', 'ok', 'Licence ' + r.serial + ' created for ' + r.name + ' (valid ' + fmt(r.issued) + ' to ' + fmt(r.expiry) + ').');
+        loadList(true);
+        return;
+      }
+      // bundle: also generate the Cutting Plan code, same customer/computer
+      google.script.run.withSuccessHandler(function (r2) {
+        $('genBtn').disabled = false;
+        $('bundleToken').value = r2.token; $('bundleResult').style.display = 'block';
+        show('genMsg', 'ok', 'Two codes created for ' + r.name + ': BBS (valid to ' + fmt(r.expiry) + ') and Cutting Plan (' + r2.maxAttempts + ' run(s)).');
+        loadList(true); loadListCP(true);
+      }).withFailureHandler(function (err) {
+        $('genBtn').disabled = false;
+        show('genMsg', 'err', 'BBS code created, but the Cutting Plan code failed: ' +
+          ((err && err.message) ? err.message.replace(/^Error:\s*/, '') : String(err)));
+        loadList(true);
+      }).adminGenerateCuttingPlan(pin(), $('name').value, $('cid').value, $('bundleAttempts').value, $('bundleType').value);
+    }).withFailureHandler(fail('genMsg'))
+      .adminGenerate(pin(), $('name').value, $('cid').value, $('days').value, $('exp').value, $('type').value, $('product').value);
+  }
+
+  function copyTokenBundle() {
+    var t = $('bundleToken'); t.select();
+    if (navigator.clipboard) { navigator.clipboard.writeText(t.value); } else { document.execCommand('copy'); }
+    show('genMsg', 'ok', 'Cutting Plan licence code copied.');
+  }
+
+  function copyToken() {
+    var t = $('token'); t.select();
+    if (navigator.clipboard) { navigator.clipboard.writeText(t.value); } else { document.execCommand('copy'); }
+    show('genMsg', 'ok', 'Licence code copied.');
+  }
+
+  function loadList(quiet) {
+    if (!quiet) clearMsg('pinMsg');
+    google.script.run.withSuccessHandler(function (list) {
+      if (!quiet) show('pinMsg', 'ok', 'Unlocked - ' + list.length + ' licence(s).');
+      var h = '';
+      list.forEach(function (r) {
+        var rev = r.status === 'revoked';
+        var prodLabel = { ALL: 'BBS + Cutting Plan (note)', BBS: 'BBS only', CUT: 'Cutting Plan' }[r.product] || (r.product || 'BBS only');
+        h += '<tr><td>' + esc(r.serial) + '</td><td>' + esc(r.name) + '</td><td>' + esc(r.computerId) + '</td><td>' + esc(prodLabel) + '</td><td>' + fmt(r.issued) +
+             '</td><td>' + fmt(r.expiry) + '</td><td><span class="tag ' + (rev ? 'revoked' : 'active') + '">' + (rev ? 'REVOKED' : 'ACTIVE') + '</span></td>' +
+             '<td><button class="' + (rev ? 'ghost' : 'danger') + '" onclick="setStatus(\'' + esc(r.serial) + '\',' + (!rev) + ')">' + (rev ? 'Restore' : 'Revoke') + '</button></td></tr>';
+      });
+      $('rows').innerHTML = h || '<tr><td colspan="8" style="color:var(--mute)">No licences yet.</td></tr>';
+    }).withFailureHandler(fail('pinMsg')).adminList(pin());
+  }
+
+  function setStatus(serial, revoke) {
+    if (!confirm((revoke ? 'Revoke ' : 'Restore ') + serial + '?')) return;
+    google.script.run.withSuccessHandler(function () { loadList(true); })
+      .withFailureHandler(fail('pinMsg')).adminSetStatus(pin(), serial, revoke, '');
+  }
+
+  $('cpCid').addEventListener('input', function () {
+    var v = this.value.toUpperCase().replace(/[^0-9A-F]/g, '').substr(0, 16);
+    this.value = v.replace(/(.{4})(?=.)/g, '$1-');
+  });
+
+  function generateCP() {
+    clearMsg('cpGenMsg'); $('cpResult').style.display = 'none'; $('cpGenBtn').disabled = true;
+    google.script.run.withSuccessHandler(function (r) {
+      $('cpGenBtn').disabled = false;
+      $('cpToken').value = r.token; $('cpResult').style.display = 'block';
+      show('cpGenMsg', 'ok', 'Licence ' + r.serial + ' created for ' + r.name + ' (' + r.maxAttempts + ' run(s)).');
+      loadListCP(true);
+    }).withFailureHandler(fail('cpGenMsg'))
+      .adminGenerateCuttingPlan(pin(), $('cpName').value, $('cpCid').value, $('cpAttempts').value, $('cpType').value);
+  }
+
+  function copyTokenCP() {
+    var t = $('cpToken'); t.select();
+    if (navigator.clipboard) { navigator.clipboard.writeText(t.value); } else { document.execCommand('copy'); }
+    show('cpGenMsg', 'ok', 'Licence code copied.');
+  }
+
+  function loadListCP(quiet) {
+    google.script.run.withSuccessHandler(function (list) {
+      var h = '';
+      list.forEach(function (r) {
+        var rev = r.status === 'revoked';
+        h += '<tr><td>' + esc(r.serial) + '</td><td>' + esc(r.name) + '</td><td>' + esc(r.computerId) + '</td><td>' + esc(r.maxAttempts) + '</td><td>' + fmt(r.issued) +
+             '</td><td><span class="tag ' + (rev ? 'revoked' : 'active') + '">' + (rev ? 'REVOKED' : 'ACTIVE') + '</span></td>' +
+             '<td><button class="' + (rev ? 'ghost' : 'danger') + '" onclick="setStatusCP(\'' + esc(r.serial) + '\',' + (!rev) + ')">' + (rev ? 'Restore' : 'Revoke') + '</button></td></tr>';
+      });
+      $('cpRows').innerHTML = h || '<tr><td colspan="7" style="color:var(--mute)">No licences yet.</td></tr>';
+    }).withFailureHandler(quiet ? function () {} : fail('pinMsg')).adminListCuttingPlan(pin());
+  }
+
+  function setStatusCP(serial, revoke) {
+    if (!confirm((revoke ? 'Revoke ' : 'Restore ') + serial + '?')) return;
+    google.script.run.withSuccessHandler(function () { loadListCP(true); })
+      .withFailureHandler(fail('pinMsg')).adminSetStatusCuttingPlan(pin(), serial, revoke, '');
+  }
+</script>
 </body>
 </html>
