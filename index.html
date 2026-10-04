@@ -21,6 +21,10 @@
   ul { margin:8px 0 0; padding-left:22px; } li { margin:4px 0; }
   .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; } @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
   .note { color:var(--mute); font-size:14px; }
+  table.price { width:100%; border-collapse:collapse; margin:10px 0; }
+  table.price th, table.price td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  table.price th { background:var(--navy); color:#fff; } table.price td:nth-child(3) { font-weight:700; white-space:nowrap; }
+  a.buy { display:inline-block; background:var(--orange); color:#fff; text-decoration:none; font-weight:700; padding:6px 16px; border-radius:8px; }
   [dir=rtl] h2 { border-left:0; padding-left:0; border-right:5px solid var(--orange); padding-right:10px; } [dir=rtl] ul { padding-left:0; padding-right:22px; }
   footer { text-align:center; color:var(--mute); font-size:14px; padding:0 16px 40px; }
 </style>
@@ -33,11 +37,14 @@
 <main>
   <div class="center">
     <a class="btn dl" data-file="BarFlow.xlsm" href="#">Download BarFlow (BBS)</a>
-    <a class="btn dl" data-file="BarFlow_CuttingPlan.exe" href="#">Download Cutting Plan</a>
+    <a class="btn dl" id="cpBtn" data-file="BarFlow_CuttingPlan.exe" href="#">Download Cutting Plan</a>
     <a class="btn alt dl" data-file="BarFlow_Full_Package.zip" href="#">Both programs (zip)</a>
-    <a class="btn alt" href="mailto:barflowapplication@gmail.com?subject=BarFlow%20license%20request">Request a license</a>
+    <a class="btn alt" href="mailto:support@barflowapp.com?subject=BarFlow%20license%20request">Request a license</a>
     <p class="note">Windows + Microsoft Excel 2016 or later (BarFlow BBS). Open the file and press <b>Enable Content</b>.
       To use them together, keep both files in the same folder: the <b>Optimize</b> button in BarFlow then opens Cutting Plan.</p>
+    <p class="note" id="cpDirectNote" style="display:none">Cutting Plan is also available as a direct download:
+      <a class="dl" id="cpDirect" data-file="BarFlow_CuttingPlan.exe" href="#">BarFlow_CuttingPlan.exe</a>
+      (Windows may ask you to confirm: choose <b>More info</b> &rarr; <b>Run anyway</b>).</p>
   </div>
 
   <div class="grid">
@@ -68,9 +75,28 @@
     <ul>
       <li>A separate program that turns your bar list into a stock-purchase and cutting plan: which bars to buy, how to cut each one, waste and cost</li>
       <li>Results in Excel: a plan per diameter, a summary and an order sheet</li>
-      <li>English or Arabic; a license is tied to one computer and to a number of runs</li>
+      <li>English or Arabic; <b>3 free trial runs</b>, then a license (tied to one computer and to a number of runs)</li>
       <li>Works alone, or together with BarFlow: press <b>Optimize</b> in BarFlow</li>
     </ul>
+  </div>
+  <div class="card" id="pricing">
+    <h2>Pricing</h2>
+    <p class="note">One-time payments, no subscription. Prices in US dollars; cards, Apple Pay, Google Pay and PayPal are accepted at checkout. After payment you receive a short 16-character activation code by email within a minute; typing it in the program activates your computer. Each activation covers one computer (the 5-computer package: up to five).</p>
+    <table class="price">
+      <tr><th>Package</th><th>What you get</th><th>Price</th><th></th></tr>
+      <tr><td><b>Complete package</b><br><span class="note">Best for most users</span></td><td>BarFlow BBS for 1 year + Cutting Plan 100 runs, working together; one code activates both programs</td><td>$55</td><td><a class="buy" href="buy.html?plan=bundle">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS)</b> &ndash; 1 year</td><td>Printing, DXF export and all shape codes for 12 months</td><td>$45</td><td><a class="buy" href="buy.html?plan=bbs1y">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS)</b> &ndash; 6 months</td><td>Same, for 6 months</td><td>$30</td><td><a class="buy" href="buy.html?plan=bbs6m">Buy</a></td></tr>
+      <tr><td><b>Cutting Plan</b> &ndash; 100 runs</td><td>100 optimisation runs (stock-purchase and cutting plans)</td><td>$20</td><td><a class="buy" href="buy.html?plan=cp100">Buy</a></td></tr>
+    </table>
+    <h3 style="margin:18px 0 4px;color:var(--navy);font-size:16px">Bigger packs and teams</h3>
+    <table class="price">
+      <tr><td><b>Cutting Plan</b> &ndash; 300 runs</td><td>300 optimisation runs</td><td>$50</td><td><a class="buy" href="buy.html?plan=cp300">Buy</a></td></tr>
+      <tr><td><b>Cutting Plan</b> &ndash; 1000 runs</td><td>1000 optimisation runs, the lowest price per run</td><td>$140</td><td><a class="buy" href="buy.html?plan=cp1000">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS)</b> &ndash; 1 year, 5 computers</td><td>For a team: one code that activates up to 5 computers for 12 months</td><td>$170</td><td><a class="buy" href="buy.html?plan=bbs5pc">Buy</a></td></tr>
+    </table>
+    <p class="note"><b>More than 5 computers:</b> write to <a href="mailto:support@barflowapp.com?subject=BarFlow%20for%20a%20company">support@barflowapp.com</a> and we will quote you.</p>
+    <p class="note">After payment your activation code is emailed automatically. See the <a href="refund.html">Refund Policy</a> (3 days), the <a href="terms.html">Terms</a> and the <a href="privacy.html">Privacy Policy</a>. Try before you buy: BarFlow has a free version and Cutting Plan includes 3 free runs. Questions: <a href="mailto:support@barflowapp.com">support@barflowapp.com</a>.</p>
   </div>
   <div class="card" dir="rtl" lang="ar">
     <h2>نبذة بالعربية</h2>
@@ -85,14 +111,25 @@
     </ul>
   </div>
 </main>
-<footer>BarFlow &middot; <a href="mailto:barflowapplication@gmail.com">barflowapplication@gmail.com</a></footer>
+<footer>BarFlow &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="refund.html">Refunds</a> &middot; <a href="mailto:support@barflowapp.com">support@barflowapp.com</a></footer>
 <script>
   // Download buttons point at the latest GitHub Release, whatever the account / repository is called:
   // https://USER.github.io/REPO/  ->  https://github.com/USER/REPO/releases/latest/download/<file>
   (function () {
-    var m = location.hostname.match(/^([^.]+)\.github\.io$/i), repo = location.pathname.split('/')[1];
-    var base = (m && repo) ? 'https://github.com/' + m[1] + '/' + repo + '/releases/latest/download/' : 'https://github.com/USER/REPO/releases/latest/download/';
+    // ---- after Cutting Plan is published on Microsoft Store, paste its page link between the quotes ----
+    //      (example: https://apps.microsoft.com/detail/9ABCDEF12345) and upload this file again. Nothing else to change.
+    var STORE_URL = "";
+    // -------------------------------------------------------------------------------------------------
+    // The GitHub repository that holds the Releases. Written here (not guessed from the page address) so the
+    // download buttons keep working when the site is served from your own domain instead of github.io.
+    var GITHUB_REPO = "awada1990-stack/BarFlow";
+    var base = 'https://github.com/' + GITHUB_REPO + '/releases/latest/download/';
     document.querySelectorAll('a.dl').forEach(function (a) { a.href = base + a.getAttribute('data-file'); });
+    if (STORE_URL) {
+      var b = document.getElementById('cpBtn');
+      b.href = STORE_URL; b.textContent = 'Get Cutting Plan (Microsoft Store)';
+      document.getElementById('cpDirectNote').style.display = 'block';
+    }
   })();
 </script>
 </body>

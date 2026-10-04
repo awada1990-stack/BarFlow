@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy BarFlow</title>
+<style>
+  :root { --navy:#12305a; --orange:#f28c28; --bg:#f4f6fa; --ink:#1b2430; --mute:#5e6b7d; --line:#dde3ec; --bad:#c0392b; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.6 "Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:var(--navy); color:#fff; border-bottom:5px solid var(--orange); padding:26px 20px; text-align:center; }
+  header a { color:#fff; text-decoration:none; } header h1 { margin:0; font-size:30px; } header h1 span { color:var(--orange); }
+  main { max-width:760px; margin:0 auto; padding:20px 16px 56px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 22px; margin:16px 0; }
+  h2 { color:var(--navy); margin:0 0 10px; font-size:19px; } .ar { color:var(--mute); font-size:14px; direction:rtl; }
+  label.plan { display:flex; gap:12px; align-items:flex-start; border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin:8px 0; cursor:pointer; }
+  label.plan:hover { border-color:var(--orange); } label.plan input { margin-top:6px; }
+  label.plan b { color:var(--navy); } label.plan .p { margin-left:auto; font-weight:700; white-space:nowrap; }
+  .f { margin:12px 0; } .f label { display:block; font-weight:600; font-size:14px; margin-bottom:3px; }
+  input[type=text], input[type=email] { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; }
+  .hint { color:var(--mute); font-size:13px; margin-top:3px; }
+  .err { color:var(--bad); font-size:14px; margin-top:4px; display:none; }
+  button { border:0; border-radius:10px; background:var(--orange); color:#fff; font:inherit; font-weight:700; padding:13px 26px; cursor:pointer; font-size:17px; }
+  button:hover { filter:brightness(.95); }
+  .box { background:#fff6ec; border:1px solid #f0c9a0; border-radius:10px; padding:10px 14px; margin:12px 0; display:none; }
+  footer { text-align:center; color:var(--mute); font-size:14px; padding:0 16px 40px; } footer a { color:var(--navy); }
+</style>
+</head>
+<body>
+<header><a href="index.html"><h1>Bar<span>Flow</span></h1></a><div>Buy a licence &middot; شراء ترخيص</div></header>
+<main>
+<form id="f" novalidate>
+  <div class="card">
+    <h2>1. Choose your package <span class="ar">اختر الباقة</span></h2>
+    <div id="plans"></div>
+    <p class="hint">One-time payment, no subscription. / دفعة واحدة بلا اشتراك.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. Your details <span class="ar">بياناتك</span></h2>
+    <div class="f"><label for="name">Full name / الاسم</label><input id="name" type="text" autocomplete="name"></div>
+    <div class="f"><label for="email">Email (your activation code is sent here) / البريد (يصلك كود التفعيل عليه)</label><input id="email" type="email" autocomplete="email"></div>
+    <p class="hint">You do <b>not</b> need your Computer ID now: you will receive a short 16-character activation code by email and type it in the program.
+      <span class="ar">لا تحتاج رقم الجهاز الآن: يصلك بالبريد كود تفعيل قصير من 16 حرفاً وتكتبه في البرنامج.</span></p>
+
+    <div class="f"><label><input id="ok" type="checkbox"> I accept the <a href="terms.html" target="_blank">Terms</a>, <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="refund.html" target="_blank">Refund Policy</a> (3 days).</label>
+      <div class="err" id="okErr">Please tick the box to continue.</div></div>
+    <div class="err" id="formErr"></div>
+    <button type="submit">Continue to secure payment &rarr;</button>
+    <p class="hint">Payment is handled by Lemon Squeezy: cards, Apple Pay, Google Pay and PayPal. Your activation code is emailed automatically within a minute.
+      <span class="ar">الدفع عبر Lemon Squeezy ويصلك كود التفعيل بالبريد تلقائياً خلال دقيقة.</span></p>
+  </div>
+
+  <div class="box" id="soon"><b>Online payment is opening soon.</b> Until then, email
+    <a id="mailLink" href="#">support@barflowapp.com</a> with the package you want and we will send your code.
+    <div class="ar">الدفع الإلكتروني سيُفتح قريباً. حتى ذلك الحين راسلنا بالباقة المطلوبة.</div></div>
+</form>
+</main>
+<footer><a href="index.html">Home</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="refund.html">Refunds</a> &middot; <a href="mailto:support@barflowapp.com">support@barflowapp.com</a></footer>
+
+<script>
+(function () {
+  // ======================= SETTINGS YOU EDIT (see the Sales Launch Guide) =======================
+  // Paste each product's Lemon Squeezy checkout link between the quotes (Share button of the product).
+  // A plan left empty = "Online payment is opening soon" message for that plan.
+  var CHECKOUT = {
+    bbs6m:  "",
+    bbs1y:  "",
+    bbs5pc: "",
+    cp100:  "",
+    cp300:  "",
+    cp1000: "",
+    bundle: ""
+  };
+  // Prices shown here must match what you set in Lemon Squeezy.
+  var PLANS = [
+    { id: "bundle", name: "Complete package",               desc: "BarFlow BBS 1 year + Cutting Plan 100 runs, one code for both programs", price: "$55" },
+    { id: "bbs1y",  name: "BarFlow (BBS) – 1 year",    desc: "Printing, DXF export and all shape codes for 12 months", price: "$45" },
+    { id: "bbs6m",  name: "BarFlow (BBS) – 6 months",  desc: "Same, for 6 months",                                    price: "$30" },
+    { id: "cp100",  name: "Cutting Plan – 100 runs",    desc: "100 optimisation runs",                                price: "$20" },
+    { id: "cp300",  name: "Cutting Plan – 300 runs",    desc: "300 optimisation runs",                                price: "$50" },
+    { id: "cp1000", name: "Cutting Plan – 1000 runs",   desc: "1000 optimisation runs",                               price: "$140" },
+    { id: "bbs5pc", name: "BarFlow (BBS) – 1 year, 5 computers", desc: "For a team: one code that activates up to 5 computers, 12 months", price: "$170" }
+  ];
+  // =============================================================================================
+  var $ = function (id) { return document.getElementById(id); };
+  var q = new URLSearchParams(location.search);
+  var current = PLANS[0];
+
+  PLANS.forEach(function (p) {
+    var l = document.createElement('label'); l.className = 'plan';
+    l.innerHTML = '<input type="radio" name="plan" value="' + p.id + '"><span><b>' + p.name + '</b><br><span class="hint">' + p.desc + '</span></span><span class="p">' + p.price + '</span>';
+    $('plans').appendChild(l);
+  });
+  function pick(id) {
+    current = PLANS.filter(function (p) { return p.id === id; })[0] || current;
+    document.querySelector('input[name=plan][value=' + current.id + ']').checked = true;
+  }
+  document.querySelectorAll('input[name=plan]').forEach(function (r) { r.addEventListener('change', function () { pick(r.value); }); });
+
+  // opened from the website or from inside a program: ?plan=<id>   (or ?bbs=.. / ?cp=.. from older program versions)
+  var pre = q.get('plan');
+  if (!pre) pre = q.get('bbs') && q.get('cp') ? 'bundle' : (q.get('cp') ? 'cp100' : (q.get('bbs') ? 'bbs1y' : 'bundle'));
+  pick(pre);
+
+  function show(id, on) { $(id).style.display = on ? 'block' : 'none'; }
+
+  $('f').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var name = $('name').value.trim(), email = $('email').value.trim(), bad = false;
+    show('okErr', !$('ok').checked);
+    if (!$('ok').checked) bad = true;
+    if (!name || !/^\S+@\S+\.\S+$/.test(email)) { $('formErr').textContent = 'Please enter your name and a valid email.'; show('formErr', true); bad = true; }
+    else show('formErr', false);
+    if (bad) return;
+
+    var base = CHECKOUT[current.id];
+    if (!base) {
+      var body = 'Package: ' + current.name + '%0D%0AName: ' + encodeURIComponent(name);
+      $('mailLink').href = 'mailto:support@barflowapp.com?subject=' + encodeURIComponent('Buy ' + current.name) + '&body=' + body;
+      show('soon', true); $('soon').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    var parts = ['checkout[email]=' + encodeURIComponent(email), 'checkout[name]=' + encodeURIComponent(name)];
+    location.href = base + (base.indexOf('?') < 0 ? '?' : '&') + parts.join('&');
+  });
+})();
+</script>
+</body>
+</html>
