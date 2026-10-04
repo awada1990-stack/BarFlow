@@ -182,6 +182,11 @@
     try { saved = localStorage.getItem('bf_lang') || ''; } catch (e) {}
     var start = q || saved || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
     show(start === 'ar' ? 'ar' : 'en');
+    // #pricing (links from inside the programs) -> scroll to the pricing card of the visible language
+    if (location.hash === '#pricing') {
+      var pc = document.getElementById('pricing-' + (start === 'ar' ? 'ar' : 'en'));
+      if (pc) setTimeout(function () { pc.scrollIntoView(); }, 50);
+    }
     document.getElementById('b-en').onclick = function () { show('en'); };
     document.getElementById('b-ar').onclick = function () { show('ar'); };
   })();
