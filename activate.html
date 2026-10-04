@@ -99,7 +99,7 @@
       .then(function (url) {
         url = url.trim();
         if (url.indexOf('https://script.google.com/macros/s/') !== 0) throw new Error('setup');
-        var full = url + '?action=redeem&code=' + encodeURIComponent(code) + '&c=' + encodeURIComponent(cid) + '&p=' + $('prod').value;
+        var full = url + '?action=redeem&code=' + encodeURIComponent(code) + '&cid=' + encodeURIComponent(cid) + '&p=' + $('prod').value;
         return fetch(full).then(function (r) { return r.text(); }).catch(function () {
           var e = new Error('network'); e.link = full; throw e;
         });
