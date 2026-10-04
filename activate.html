@@ -49,12 +49,12 @@
   <div class="card" id="result" style="display:none">
     <h2>Your license code <span class="ar">كود الرخصة</span></h2>
     <textarea id="tok" readonly></textarea>
-    <p><button id="copy" type="button" class="alt">Copy</button></p>
+    <p><button id="copy" type="button" class="alt">Copy</button> <span id="copied" class="hint"></span></p>
     <ol>
-      <li>Go back to the program (BarFlow or Cutting Plan).</li>
-      <li>Press <b>Paste</b> next to <b>License Code</b>, then press <b>Activate</b>.</li>
+      <li>Press <b>Copy</b> above (if it does not say &ldquo;Copied&rdquo; already).</li>
+      <li>Go back to <b>BarFlow</b> and press <b>Activate</b> again. (In Cutting Plan: <b>Paste</b>, then <b>Activate</b>.)</li>
     </ol>
-    <p class="ar">ارجع إلى البرنامج، واضغط Paste بجانب License Code ثم Activate.</p>
+    <p class="ar">اضغط Copy أعلاه، ثم ارجع إلى BarFlow واضغط Activate مرة أخرى. (في Cutting Plan: Paste ثم Activate.)</p>
     <p class="hint">This code works only on this computer. Keep it: it can be used again if you reinstall. / يعمل هذا الكود على هذا الجهاز فقط، احتفظ به لإعادة التثبيت.</p>
   </div>
 </main>
@@ -109,6 +109,7 @@
         if (txt.indexOf('OK|') === 0) {
           $('tok').value = txt.substr(3);
           $('result').style.display = 'block';
+          try { navigator.clipboard.writeText(txt.substr(3)).then(function () { $('copied').textContent = 'Copied automatically / تم النسخ تلقائياً'; }, function () {}); } catch (e) {}
           say('ok', 'Done. Your license code is below. / تم. كود الرخصة أدناه.');
           $('result').scrollIntoView({ behavior: 'smooth' });
         } else {
