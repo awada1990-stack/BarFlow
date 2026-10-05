@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarFlow - برنامج جداول تفريد الحديد في إكسل وخطة قص حديد التسليح</title>
+<meta name="description" content="جداول تفريد الحديد في إكسل برسم حقيقي للأشكال وحساب طول القص والوزن وتصدير DXF لأوتوكاد، وخطة قص تقلل هدر حديد التسليح. بالعربية والإنجليزية. جرّبه مجاناً.">
+<link rel="canonical" href="https://barflowapp.com/ar/">
+<link rel="alternate" hreflang="en" href="https://barflowapp.com/">
+<link rel="alternate" hreflang="ar" href="https://barflowapp.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://barflowapp.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BarFlow">
+<meta property="og:title" content="BarFlow - برنامج جداول تفريد الحديد في إكسل وخطة قص حديد التسليح">
+<meta property="og:description" content="جداول تفريد الحديد في إكسل برسم حقيقي للأشكال وحساب طول القص والوزن وتصدير DXF لأوتوكاد، وخطة قص تقلل هدر حديد التسليح. بالعربية والإنجليزية. جرّبه مجاناً.">
+<meta property="og:url" content="https://barflowapp.com/ar/">
+<meta property="og:image" content="https://barflowapp.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BarFlow - برنامج جداول تفريد الحديد في إكسل وخطة قص حديد التسليح">
+<meta name="twitter:description" content="جداول تفريد الحديد في إكسل برسم حقيقي للأشكال وحساب طول القص والوزن وتصدير DXF لأوتوكاد، وخطة قص تقلل هدر حديد التسليح. بالعربية والإنجليزية. جرّبه مجاناً.">
+<meta name="twitter:image" content="https://barflowapp.com/og.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#12305a">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://barflowapp.com/#org","name":"BarFlow","url":"https://barflowapp.com/","logo":"https://barflowapp.com/apple-touch-icon.png","email":"support@barflowapp.com"},{"@type":"WebSite","@id":"https://barflowapp.com/#site","url":"https://barflowapp.com/","name":"BarFlow","inLanguage":["en","ar"],"publisher":{"@id":"https://barflowapp.com/#org"}},{"@type":"SoftwareApplication","name":"BarFlow BBS","applicationCategory":"BusinessApplication","operatingSystem":"Windows","description":"برنامج جداول تفريد الحديد في إكسل: رسم أشكال الأسياخ وحساب طول القص والوزن وتصدير DXF والطباعة.","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"30","highPrice":"170","offerCount":"3"},"publisher":{"@id":"https://barflowapp.com/#org"}},{"@type":"SoftwareApplication","name":"BarFlow Cutting Plan","applicationCategory":"BusinessApplication","operatingSystem":"Windows","description":"برنامج خطة قص حديد التسليح: أي الأسياخ تشتري وكيف تقص كل سيخ والهدر والوزن والتكلفة، مع أمر شراء في إكسل.","downloadUrl":"https://apps.microsoft.com/detail/9N9P9HSBWGD3","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"20","highPrice":"140","offerCount":"3"},"publisher":{"@id":"https://barflowapp.com/#org"}}]}</script>
+<style>
+  :root { --navy:#12305a; --orange:#f28c28; --bg:#f4f6fa; --ink:#1b2430; --mute:#5e6b7d; --line:#dde3ec; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font:16px/1.65 "Segoe UI",Roboto,Tahoma,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:var(--navy); color:#fff; border-bottom:5px solid var(--orange); padding:34px 20px 30px; text-align:center; position:relative; }
+  header h1 { margin:0; font-size:44px; letter-spacing:.5px; } header h1 span { color:var(--orange); }
+  header p { margin:6px 0 0; color:#c9d5ea; font-size:17px; }
+  .lang { position:absolute; top:12px; right:14px; } .lang button { background:transparent; color:#fff; border:1px solid #6d86b0; border-radius:8px; padding:5px 12px; font:inherit; font-size:14px; cursor:pointer; margin-left:4px; }
+  .lang button.on { background:var(--orange); border-color:var(--orange); font-weight:700; }
+  main { max-width:920px; margin:0 auto; padding:18px 16px 56px; }
+  .hero { padding:10px 0 4px; } .tagline { color:var(--navy); font-size:27px; margin:14px 0 4px; border:0 !important; padding:0 !important; }
+  .lead { color:var(--mute); font-size:18px; margin:0 0 6px; }
+  .btn { display:inline-block; background:var(--navy); color:#fff; text-decoration:none; font-weight:700; padding:13px 26px; border-radius:10px; font-size:17px; margin:12px 6px 4px; }
+  .btn.alt { background:#34527f; } .btn.buynow { background:var(--orange); font-size:20px; padding:15px 38px; margin-top:18px; }
+  .center { text-align:center; } .note { color:var(--mute); font-size:14px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  h2 { color:var(--navy); margin:0 0 10px; font-size:22px; border-left:5px solid var(--orange); padding-left:10px; }
+  h3 { margin:18px 0 4px; color:var(--navy); font-size:17px; }
+  ul { margin:8px 0 0; padding-left:22px; } li { margin:5px 0; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; } .steps3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .step { background:var(--bg); border-radius:10px; padding:12px 14px; } .step b { color:var(--navy); } .step p { margin:4px 0 0; }
+  @media (max-width:700px){ .grid, .steps3 { grid-template-columns:1fr; } .lang { position:static; margin-bottom:10px; } }
+  table.price { width:100%; border-collapse:collapse; margin:10px 0; }
+  table.price th, table.price td { border:1px solid var(--line); padding:9px 10px; text-align:start; vertical-align:top; }
+  table.price th { background:var(--navy); color:#fff; } table.price td.p { font-weight:700; white-space:nowrap; font-size:17px; }
+  a.buy { display:inline-block; background:var(--orange); color:#fff; text-decoration:none; font-weight:700; padding:7px 18px; border-radius:8px; }
+  details { border-top:1px solid var(--line); padding:8px 0; } details:first-of-type { border-top:0; } summary { cursor:pointer; font-weight:600; color:var(--navy); } details p { margin:6px 0 2px; }
+  [dir=rtl] h2 { border-left:0; padding-left:0; border-right:5px solid var(--orange); padding-right:10px; } [dir=rtl] ul { padding-left:0; padding-right:22px; }
+  .pane { display:none; } .pane.on { display:block; }
+  footer { text-align:center; color:var(--mute); font-size:14px; padding:0 16px 40px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="lang"><button id="b-en" type="button">English</button><button id="b-ar" type="button">العربية</button></div>
+  <h1>Bar<span>Flow</span></h1>
+  <p>Smart Bar Bending Schedules &middot; جداول تفريد الحديد الذكية</p>
+</header>
+<main>
+
+<div class="pane" id="pane-en">
+  <div class="center hero">
+    <h2 class="tagline">Smart bar bending schedules in Excel, and a cutting plan that saves steel</h2>
+    <p class="lead">Two Windows programs for rebar detailers, engineers and contractors.</p>
+    <a class="btn dl" data-file="BarFlow.xlsm" href="#">Download BarFlow (BBS)</a>
+    <a class="btn dl cpBtn" data-file="BarFlow_CuttingPlan.exe" href="#">Download Cutting Plan</a>
+<br>
+    <a class="btn buynow" href="#pricing-en">Buy a license &darr;</a>
+    <p class="note">Windows + Microsoft Excel 2016 or later (for BarFlow BBS). Open the file and press <b>Enable Content</b>. If Excel says the macros are blocked: right-click the downloaded file &rarr; <b>Properties</b> &rarr; tick <b>Unblock</b> &rarr; OK, then open it again. Get Cutting Plan from the Microsoft Store (no Windows warning); BarFlow BBS finds it automatically and its <b>Optimize</b> button opens it.</p>
+    <p class="note cpDirectNote" style="display:none">Other ways to get Cutting Plan (outside the Store): <a class="dl" data-file="BarFlow_CuttingPlan.exe" href="#">BarFlow_CuttingPlan.exe</a> &middot; <a class="dl" data-file="BarFlow_Full_Package.zip" href="#">BBS + Cutting Plan (zip)</a>. Windows will warn you because these files are new: choose <b>More info</b> &rarr; <b>Run anyway</b>.</p>
+  </div>
+
+  <div class="card"><h2>How it works</h2><div class="steps3">
+<div class="step"><b>1. Download and try it free</b><p>BarFlow BBS works with the sample shape codes <b>100</b>, <b>201</b> and <b>500</b> without a license. Cutting Plan gives you <b>3 free runs</b>.</p></div>
+<div class="step"><b>2. Buy a license</b><p>Pick a package below and pay by card or PayPal (Apple Pay and Google Pay too, where your device and browser support them). A short <b>16-character activation code</b> arrives by email within a minute.</p></div>
+<div class="step"><b>3. Activate</b><p>Open the program, press <b>License</b>, type the code and press <b>Activate</b>. You need the internet only for this one moment; afterwards the program works offline.</p></div>
+  </div></div>
+
+  <div class="grid">
+    <div class="card"><h2>BarFlow (BBS) &ndash; Excel</h2><ul><li>Bar bending schedules per BS 8666 with real shape drawings</li><li>Cutting length, total number and weight calculated automatically</li><li>Millimetres or feet-inches (lb), English or Arabic</li><li>Export the schedule to DXF for AutoCAD</li><li>Print to A4 with page numbers</li><li>Cutting list export to Excel</li></ul></div>
+    <div class="card"><h2>BarFlow Cutting Plan</h2><ul><li>Turns your bar list into a stock-purchase and cutting plan: which bars to buy, how to cut each one, the waste and the cost</li><li>Results in Excel: a plan per diameter, a summary and a purchase order</li><li>English or Arabic. <b>3 free runs</b>, then a license</li><li>Works alone, or together with BarFlow: press <b>Optimize</b> in BarFlow</li></ul></div>
+  </div>
+
+  <div class="card" id="pricing-en">
+    <h2>Pricing</h2>
+    <p class="note">One-time payments, no subscription. Prices in US dollars. After payment you receive a short 16-character activation code by email within a minute; typing it in the program activates your computer. Each activation covers one computer (the 5-computer package: up to five).</p>
+    <table class="price">
+      <tr><th>Package</th><th>What you get</th><th>Price</th><th></th></tr>
+      <tr><td><b>Complete package</b><br><span class="note">Best for most users</span></td><td>BarFlow BBS for 1 year + Cutting Plan with 100 runs. One code activates both programs.</td><td class="p">$55</td><td><a class="buy" href="../buy.html?plan=bundle">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – 1 year</b></td><td>Printing, DXF export and all shape codes for 12 months.</td><td class="p">$45</td><td><a class="buy" href="../buy.html?plan=bbs1y">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – 6 months</b></td><td>The same features for 6 months.</td><td class="p">$30</td><td><a class="buy" href="../buy.html?plan=bbs6m">Buy</a></td></tr>
+      <tr><td><b>Cutting Plan – 100 runs</b></td><td>100 optimisation runs (stock-purchase and cutting plans).</td><td class="p">$20</td><td><a class="buy" href="../buy.html?plan=cp100">Buy</a></td></tr>
+    </table>
+    <h3>Bigger packs and teams</h3>
+    <table class="price">
+      <tr><td><b>Cutting Plan – 300 runs</b></td><td>300 optimisation runs.</td><td class="p">$50</td><td><a class="buy" href="../buy.html?plan=cp300">Buy</a></td></tr>
+      <tr><td><b>Cutting Plan – 1000 runs</b></td><td>1000 runs: the lowest price per run.</td><td class="p">$140</td><td><a class="buy" href="../buy.html?plan=cp1000">Buy</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – 1 year, 5 computers</b></td><td>For a team: one code activates up to 5 computers for 12 months.</td><td class="p">$170</td><td><a class="buy" href="../buy.html?plan=bbs5pc">Buy</a></td></tr>
+    </table>
+    <p class="note"><b>More than 5 computers?</b> Write to <a href="mailto:support@barflowapp.com?subject=BarFlow%20for%20a%20company">support@barflowapp.com</a> and we will quote you.</p>
+    <p class="note">See the <a href="../refund.html">Refund Policy</a> (3 days), the <a href="../terms.html">Terms</a> and the <a href="../privacy.html">Privacy Policy</a>. Questions: <a href="mailto:support@barflowapp.com">support@barflowapp.com</a>.</p>
+  </div>
+
+  <div class="card"><h2>Questions</h2>
+<details><summary>Do I need the internet?</summary><p>Only once, to activate with your code. After that BarFlow and Cutting Plan work fully offline.</p></details>
+<details><summary>On how many computers can I use a license?</summary><p>One computer per license. The 5-computer package covers up to five. To move a license to another computer, write to us.</p></details>
+<details><summary>The code does not work, or I did not receive it.</summary><p>Check the Spam folder first, then write to <a href="mailto:support@barflowapp.com">support@barflowapp.com</a> with your order number. If we cannot fix it you can ask for a refund within 3 days.</p></details>
+<details><summary>Which Excel and Windows do I need?</summary><p>Windows with Microsoft Excel 2016 or later for BarFlow (BBS). Cutting Plan needs only Windows (and Excel to view the results).</p></details>
+<details><summary>My antivirus or Windows warns me.</summary><p>Antivirus products may warn about any Excel file that contains macros, and Windows may ask you to confirm a new program (choose <b>More info</b> &rarr; <b>Run anyway</b>). Only download BarFlow from this page.</p></details>
+  </div>
+
+  <div class="card"><h2>Guides</h2><ul><li><a href="/guides/bar-bending-schedule-guide.html">Bar bending schedule: what it is and how to prepare one</a></li><li><a href="/guides/rebar-weight-and-cutting-length.html">How to calculate rebar weight and cutting length</a></li><li><a href="/guides/reduce-rebar-waste-cutting-plan.html">How to cut rebar with less waste</a></li></ul></div>
+
+  <div class="card"><h2>Important</h2><p>The programs may contain errors; always check the results before using them on site.</p></div>
+</div>
+
+<div class="pane" id="pane-ar" dir="rtl" lang="ar">
+  <div class="center hero">
+    <h2 class="tagline">جداول تفريد الحديد في إكسل، وخطة قص توفّر الحديد</h2>
+    <p class="lead">برنامجان لنظام Windows لمفرّدي الحديد والمهندسين والمقاولين.</p>
+    <a class="btn dl" data-file="BarFlow.xlsm" href="#">تنزيل BarFlow (BBS)</a>
+    <a class="btn dl cpBtn" data-file="BarFlow_CuttingPlan.exe" href="#">تنزيل Cutting Plan</a>
+<br>
+    <a class="btn buynow" href="#pricing-ar">اشترِ ترخيصاً &darr;</a>
+    <p class="note">نظام Windows مع Microsoft Excel 2016 أو أحدث (لبرنامج BarFlow BBS). افتح الملف واضغط <b>Enable Content</b>. وإذا ظهرت رسالة أن الماكرو محظور: انقر بزر الفأرة الأيمن على الملف المنزَّل ← <b>Properties</b> ← ضع علامة <b>Unblock</b> ← OK ثم افتحه من جديد. نزّل Cutting Plan من متجر Microsoft (بدون تحذير من Windows)، ويجده BarFlow BBS تلقائياً ويفتحه زر <b>Optimize</b>.</p>
+    <p class="note cpDirectNote" style="display:none">طرق أخرى للحصول على Cutting Plan (خارج المتجر): <a class="dl" data-file="BarFlow_CuttingPlan.exe" href="#">BarFlow_CuttingPlan.exe</a> &middot; <a class="dl" data-file="BarFlow_Full_Package.zip" href="#">BBS + Cutting Plan (zip)</a>. سيحذّرك Windows لأن هذه الملفات جديدة: اختر <b>More info</b> ثم <b>Run anyway</b>.</p>
+  </div>
+
+  <div class="card"><h2>كيف يعمل</h2><div class="steps3">
+<div class="step"><b>1. نزّل وجرّب مجاناً</b><p>يعمل BarFlow BBS بدون ترخيص مع أكواد الأشكال التجريبية <b>100</b> و<b>201</b> و<b>500</b>. ويمنحك Cutting Plan <b>3 تشغيلات مجانية</b>.</p></div>
+<div class="step"><b>2. اشترِ ترخيصاً</b><p>اختر باقة من الأسفل وادفع بالبطاقة أو PayPal. وتظهر وسيلتا Apple Pay وGoogle Pay أيضاً إن كان جهازك ومتصفحك يدعمانهما. يصلك على البريد خلال دقيقة <b>كود تفعيل قصير من 16 حرفاً</b>.</p></div>
+<div class="step"><b>3. فعّل</b><p>افتح البرنامج واضغط <b>License</b> واكتب الكود ثم اضغط <b>Activate</b>. تحتاج الإنترنت لهذه اللحظة فقط، وبعدها يعمل البرنامج دون اتصال.</p></div>
+  </div></div>
+
+  <div class="grid">
+    <div class="card"><h2>BarFlow (BBS) &ndash; برنامج إكسل</h2><ul><li>جداول تفريد الحديد حسب BS 8666 مع رسم حقيقي للأشكال</li><li>حساب طول القص والعدد الكلي والوزن تلقائياً</li><li>وحدات المليمتر أو القدم-إنش (lb)، بالعربية أو الإنجليزية</li><li>تصدير الجدول إلى DXF لبرنامج AutoCAD</li><li>الطباعة على A4 مع ترقيم الصفحات</li><li>تصدير قائمة القص إلى Excel</li></ul></div>
+    <div class="card"><h2>BarFlow Cutting Plan &ndash; خطة القص</h2><ul><li>يحوّل قائمة الحديد إلى خطة شراء وقص: أي الأطوال تشتريها، وكيف تقص كل قضيب، والهدر والتكلفة</li><li>النتائج في Excel: خطة لكل قطر وملخص وأمر شراء</li><li>بالعربية أو الإنجليزية. <b>3 تشغيلات مجانية</b> ثم ترخيص</li><li>يعمل منفرداً أو مع BarFlow: اضغط <b>Optimize</b> في BarFlow</li></ul></div>
+  </div>
+
+  <div class="card" id="pricing-ar">
+    <h2>الأسعار</h2>
+    <p class="note">دفعة واحدة بلا اشتراك. الأسعار بالدولار الأمريكي. بعد الدفع يصلك بالبريد خلال دقيقة كود تفعيل قصير من 16 حرفاً، وبكتابته في البرنامج يُفعَّل جهازك. كل تفعيل يغطي جهازاً واحداً (باقة الخمسة أجهزة: حتى خمسة).</p>
+    <table class="price">
+      <tr><th>الباقة</th><th>ماذا تحصل عليه</th><th>السعر</th><th></th></tr>
+      <tr><td><b>الباقة الكاملة</b><br><span class="note">الأنسب لمعظم المستخدمين</span></td><td>BarFlow BBS لمدة سنة + Cutting Plan بـ 100 تشغيل. كود واحد يفعّل البرنامجين.</td><td class="p">$55</td><td><a class="buy" href="../buy.html?plan=bundle">شراء</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – سنة</b></td><td>الطباعة وتصدير DXF وكل أكواد الأشكال لمدة 12 شهراً.</td><td class="p">$45</td><td><a class="buy" href="../buy.html?plan=bbs1y">شراء</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – 6 أشهر</b></td><td>نفس المزايا لمدة 6 أشهر.</td><td class="p">$30</td><td><a class="buy" href="../buy.html?plan=bbs6m">شراء</a></td></tr>
+      <tr><td><b>Cutting Plan – 100 تشغيل</b></td><td>100 عملية تحسين (خطة شراء وقص الحديد).</td><td class="p">$20</td><td><a class="buy" href="../buy.html?plan=cp100">شراء</a></td></tr>
+    </table>
+    <h3>باقات أكبر وللفرق</h3>
+    <table class="price">
+      <tr><td><b>Cutting Plan – 300 تشغيل</b></td><td>300 عملية تحسين.</td><td class="p">$50</td><td><a class="buy" href="../buy.html?plan=cp300">شراء</a></td></tr>
+      <tr><td><b>Cutting Plan – 1000 تشغيل</b></td><td>1000 تشغيل: أقل سعر للتشغيل الواحد.</td><td class="p">$140</td><td><a class="buy" href="../buy.html?plan=cp1000">شراء</a></td></tr>
+      <tr><td><b>BarFlow (BBS) – سنة، 5 أجهزة</b></td><td>للفرق: كود واحد يفعّل حتى 5 أجهزة لمدة 12 شهراً.</td><td class="p">$170</td><td><a class="buy" href="../buy.html?plan=bbs5pc">شراء</a></td></tr>
+    </table>
+    <p class="note"><b>أكثر من 5 أجهزة؟</b> راسلنا على <a href="mailto:support@barflowapp.com?subject=BarFlow%20for%20a%20company">support@barflowapp.com</a> ونرسل لك عرض سعر.</p>
+    <p class="note">اطّلع على <a href="../refund.html">سياسة الاسترداد</a> (3 أيام) و<a href="../terms.html">الشروط</a> و<a href="../privacy.html">الخصوصية</a>. للاستفسار: <a href="mailto:support@barflowapp.com">support@barflowapp.com</a>.</p>
+  </div>
+
+  <div class="card"><h2>أسئلة شائعة</h2>
+<details><summary>هل أحتاج إلى الإنترنت؟</summary><p>مرة واحدة فقط لتفعيل الكود. بعدها يعمل BarFlow وCutting Plan بالكامل دون اتصال.</p></details>
+<details><summary>على كم جهاز أستعمل الترخيص؟</summary><p>جهاز واحد لكل ترخيص، وباقة الخمسة أجهزة تغطي خمسة. لنقل الترخيص إلى جهاز آخر راسلنا.</p></details>
+<details><summary>الكود لا يعمل أو لم يصلني.</summary><p>افحص مجلد Spam أولاً، ثم راسلنا على <a href="mailto:support@barflowapp.com">support@barflowapp.com</a> مع رقم طلبك. وإن لم نستطع الحل فيمكنك طلب استرداد خلال 3 أيام.</p></details>
+<details><summary>أي إصدار من Excel وWindows أحتاج؟</summary><p>Windows مع Microsoft Excel 2016 أو أحدث لبرنامج BarFlow (BBS). أما Cutting Plan فيحتاج Windows فقط (وExcel لعرض النتائج).</p></details>
+<details><summary>ظهر تحذير من مضاد الفيروسات أو Windows.</summary><p>قد تحذّر مضادات الفيروسات من أي ملف إكسل فيه ماكرو، وقد يطلب Windows تأكيدك عند تشغيل برنامج جديد (اختر <b>More info</b> ثم <b>Run anyway</b>). نزّل BarFlow من هذه الصفحة فقط.</p></details>
+  </div>
+
+  <div class="card"><h2>أدلة</h2><ul><li><a href="/ar/guides/bar-bending-schedule-guide.html">جدول تفريد الحديد: ما هو وكيف تُعدّه</a></li><li><a href="/ar/guides/rebar-weight-and-cutting-length.html">كيف تحسب وزن حديد التسليح وطول القص</a></li><li><a href="/ar/guides/reduce-rebar-waste-cutting-plan.html">كيف تقصّ حديد التسليح بأقل هدر</a></li></ul></div>
+
+  <div class="card"><h2>مهم</h2><p>قد تحتوي البرامج على أخطاء؛ تحقق دائماً من النتائج قبل استعمالها في الموقع.</p></div>
+</div>
+</main>
+<footer>BarFlow &middot; <a href="../guides/">Guides</a> &middot; <a href="../ar/guides/">الأدلة</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../refund.html">Refunds</a> &middot; <a href="mailto:support@barflowapp.com">support@barflowapp.com</a></footer>
+<script>
+  (function () {
+    // ---- after Cutting Plan is published on Microsoft Store, paste its page link between the quotes ----
+    //      (example: https://apps.microsoft.com/detail/9ABCDEF12345) and upload this file again. Nothing else to change.
+    var STORE_URL = "https://apps.microsoft.com/detail/9N9P9HSBWGD3";
+    // -------------------------------------------------------------------------------------------------
+    // The GitHub repository that holds the Releases. Written here (not guessed from the page address) so the
+    // download buttons keep working when the site is served from your own domain instead of github.io.
+    var GITHUB_REPO = "awada1990-stack/BarFlow";
+    var base = 'https://github.com/' + GITHUB_REPO + '/releases/latest/download/';
+    document.querySelectorAll('a.dl').forEach(function (a) { a.href = base + a.getAttribute('data-file'); });
+    if (STORE_URL) {
+      document.querySelectorAll('a.cpBtn').forEach(function (b) { b.href = STORE_URL; b.textContent = b.closest('#pane-ar') ? 'تنزيل Cutting Plan (Microsoft Store)' : 'Get Cutting Plan (Microsoft Store)'; });
+      document.querySelectorAll('.cpDirectNote').forEach(function (n) { n.style.display = 'block'; });
+    }
+    // English / Arabic: ?lang=ar, the saved choice, or the browser language
+    function show(l) {
+      document.getElementById('pane-en').className = 'pane' + (l === 'en' ? ' on' : '');
+      document.getElementById('pane-ar').className = 'pane' + (l === 'ar' ? ' on' : '');
+      document.getElementById('b-en').className = l === 'en' ? 'on' : ''; document.getElementById('b-ar').className = l === 'ar' ? 'on' : '';
+      document.documentElement.lang = l;
+      try { localStorage.setItem('bf_lang', l); } catch (e) {}
+    }
+    var q = new URLSearchParams(location.search).get('lang'), saved = '';
+    try { saved = localStorage.getItem('bf_lang') || ''; } catch (e) {}
+    var PAGE_LANG = "ar";      // "" = automatic (home page), "ar" = the Arabic page /ar/
+    var start = PAGE_LANG || q || saved || ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
+    show(start === 'ar' ? 'ar' : 'en');
+    // #pricing (links from inside the programs) -> scroll to the pricing card of the visible language
+    if (location.hash === '#pricing') {
+      var pc = document.getElementById('pricing-' + (start === 'ar' ? 'ar' : 'en'));
+      if (pc) setTimeout(function () { pc.scrollIntoView(); }, 50);
+    }
+    document.getElementById('b-en').onclick = function () { show('en'); };
+    document.getElementById('b-ar').onclick = function () { show('ar'); };
+  })();
+</script>
+</body>
+</html>
