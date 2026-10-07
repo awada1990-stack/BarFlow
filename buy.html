@@ -67,13 +67,13 @@
   // Paste each product's Lemon Squeezy checkout link between the quotes (Share button of the product).
   // A plan left empty = "Online payment is opening soon" message for that plan.
   var CHECKOUT = {
-    bbs6m:  "https://barflow.lemonsqueezy.com/checkout/buy/add7eba9-b574-4f6b-a3b1-c3f971ba05cb",
-    bbs1y:  "https://barflow.lemonsqueezy.com/checkout/buy/c816df82-0b39-47b3-9542-7ad7248292d3",
-    bbs5pc: "https://barflow.lemonsqueezy.com/checkout/buy/e7b3e85c-0835-4167-a216-f0c69676792f",
-    cp100:  "https://barflow.lemonsqueezy.com/checkout/buy/90c73fcc-b936-4bf2-97a1-21fe111ed8f4",
-    cp300:  "https://barflow.lemonsqueezy.com/checkout/buy/162d6eaa-2768-46d8-94be-9484723cef6a",
-    cp1000: "https://barflow.lemonsqueezy.com/checkout/buy/f99b81df-7e67-43e1-ac49-d916e488943b",
-    bundle: "https://barflow.lemonsqueezy.com/checkout/buy/eb8a05d1-97f3-4ed6-8dab-e23803849f6f"
+    bbs6m:  "https://barflow.lemonsqueezy.com/checkout/buy/737babdb-b78e-4290-9316-12d1777f1a84",
+    bbs1y:  "https://barflow.lemonsqueezy.com/checkout/buy/1fdb295b-ebba-421c-8e61-a40a1a8a2e0b",
+    bbs5pc: "https://barflow.lemonsqueezy.com/checkout/buy/1c107c7a-edf1-4d9f-a333-862877101839",
+    cp100:  "https://barflow.lemonsqueezy.com/checkout/buy/7317ccb2-d761-4fc8-83f6-d14c4bf33227",
+    cp300:  "https://barflow.lemonsqueezy.com/checkout/buy/a7c594a6-e222-4036-b941-067d9eca9a28",
+    cp1000: "https://barflow.lemonsqueezy.com/checkout/buy/a23297d5-d8e0-4400-82da-806fe7440df2",
+    bundle: "https://barflow.lemonsqueezy.com/checkout/buy/155520b2-ba1c-4e13-a9b0-f5bbba52ec42"
   };
   // Prices shown here must match what you set in Lemon Squeezy.
   var PLANS = [
@@ -125,6 +125,7 @@
       return;
     }
     var parts = ['checkout[email]=' + encodeURIComponent(email), 'checkout[name]=' + encodeURIComponent(name)];
+    var dc = q.get('discount'); if (dc) parts.push('checkout[discount_code]=' + encodeURIComponent(dc));
     location.href = base + (base.indexOf('?') < 0 ? '?' : '&') + parts.join('&');
   });
 })();
