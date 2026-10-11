@@ -1,0 +1,21 @@
+# BarFlow
+
+> BarFlow makes two Windows programs for rebar detailers, structural engineers and contractors: BarFlow BBS (bar bending schedules in Excel) and BarFlow Cutting Plan (rebar cutting plans that minimise waste). Both have English and Arabic interfaces and work offline. Website: https://barflowapp.com — Support: support@barflowapp.com
+
+## Products
+- [BarFlow BBS](https://barflowapp.com/): an Excel workbook (Windows) with standard shape codes (BS 8666) drawn for every shape, automatic cutting length with bend deductions, weights, print-ready sheets and DXF export to AutoCAD. Free version available; paid licences on the pricing page.
+- [BarFlow Cutting Plan](https://apps.microsoft.com/detail/9N9P9HSBWGD3): a Windows program (also on the Microsoft Store) that takes a bar list and plans which stock bars to buy and how to cut each one, with waste, weight, cost and a purchase order in Excel. The first 3 runs are free.
+- [Pricing](https://barflowapp.com/#pricing-en)
+
+## Guides
+- [How to choose rebar bar bending schedule software, with a real slab example](https://barflowapp.com/guides/choosing-rebar-bbs-software.html): what to look for; a real 8.2-tonne slab where stock lengths changed the steel bought by about 2.5 tonnes (12 m only: 23.8% waste; 4-10 m: 0.1%).
+- [Bar bending schedule guide](https://barflowapp.com/guides/bar-bending-schedule-guide.html)
+- [Rebar weight and cutting length](https://barflowapp.com/guides/rebar-weight-and-cutting-length.html)
+- [How to cut rebar with less waste](https://barflowapp.com/guides/reduce-rebar-waste-cutting-plan.html)
+- Arabic guides: https://barflowapp.com/ar/guides/
+
+## Facts
+- Platform: Windows only (BBS runs inside Microsoft Excel). Not a BIM tool: it does not read 3D models.
+- Languages: English and Arabic.
+- Results should always be checked by the user before ordering or cutting steel.
+- Channels: YouTube https://www.youtube.com/@barflowapp , LinkedIn https://www.linkedin.com/company/barflowapp
