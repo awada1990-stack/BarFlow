@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebar Bar Bending Schedule Software: How to Choose, With a Real Slab Example | BarFlow</title>
+<meta name="description" content="What to look for in bar bending schedule (BBS) and rebar cutting software, the main types of tools, and a real 8-tonne slab where the choice of stock lengths changed the steel bought by 2.5 tonnes.">
+<link rel="canonical" href="https://barflowapp.com/guides/choosing-rebar-bbs-software.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BarFlow">
+<meta property="og:title" content="Rebar Bar Bending Schedule Software: How to Choose, With a Real Slab Example">
+<meta property="og:description" content="What to look for in BBS and rebar cutting software, and a real slab where stock lengths changed the steel bought by 2.5 tonnes.">
+<meta property="og:url" content="https://barflowapp.com/guides/choosing-rebar-bbs-software.html">
+<meta property="og:image" content="https://barflowapp.com/og.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#12305a">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Rebar Bar Bending Schedule Software: How to Choose, With a Real Slab Example","description":"What to look for in bar bending schedule and rebar cutting software, and a real slab where stock lengths changed the steel bought by 2.5 tonnes.","inLanguage":"en","datePublished":"2026-10-11","dateModified":"2026-10-11","mainEntityOfPage":"https://barflowapp.com/guides/choosing-rebar-bbs-software.html","image":"https://barflowapp.com/og.png","author":{"@type":"Organization","name":"BarFlow","url":"https://barflowapp.com/"},"publisher":{"@type":"Organization","name":"BarFlow","logo":{"@type":"ImageObject","url":"https://barflowapp.com/apple-touch-icon.png"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a bar bending schedule (BBS)?","acceptedAnswer":{"@type":"Answer","text":"A bar bending schedule is the table that tells the workshop exactly which bars to cut and bend for each part of a structure: bar mark, diameter, number of bars, shape, dimensions, cutting length and weight."}},{"@type":"Question","name":"How is the cutting length of a bent bar calculated?","acceptedAnswer":{"@type":"Answer","text":"Add the outside dimensions of the bar and subtract a deduction for each bend, because steel bends along a curve, not a sharp corner. The deduction depends on the bend angle, the bar diameter and the code you follow. Example: a U-bar of 1160 + 190 + 1160 mm in 12 mm steel with two 90-degree bends and a deduction of 4 x diameter (48 mm) has a cutting length of 2462 mm, rounded to 2460 mm."}},{"@type":"Question","name":"How can I reduce rebar waste when cutting from stock bars?","acceptedAnswer":{"@type":"Answer","text":"Plan the cuts per diameter, combine pieces from different members, and choose stock lengths that fit your pieces. In one real slab of about 8.2 tonnes, buying only 12 m bars wasted about 24 percent, while stock lengths from 4 to 10 m wasted less than 1 percent."}},{"@type":"Question","name":"Is there bar bending schedule software that works in Excel?","acceptedAnswer":{"@type":"Answer","text":"Yes. BarFlow BBS is an Excel workbook that draws the bar shapes from shape codes, calculates cutting length and weight, prints the schedule and exports it to DXF for AutoCAD. BarFlow Cutting Plan is a separate Windows program that plans how to cut stock bars with minimum waste."}},{"@type":"Question","name":"Does BarFlow work in Arabic?","acceptedAnswer":{"@type":"Answer","text":"Yes. BarFlow BBS and BarFlow Cutting Plan have English and Arabic interfaces."}}]}]}</script>
+<link rel="stylesheet" href="/site.css">
+<style>
+  .art { max-width:820px; margin:0 auto; padding:18px 16px 56px; } .art h1 { color:var(--navy); font-size:32px; line-height:1.25; margin:10px 0 6px; }
+  .art h2 { margin-top:26px; } .meta { color:var(--mute); font-size:14px; margin:0 0 14px; } .art p, .art li { font-size:17px; }
+  .art ol { padding-left:24px; } table.data { width:100%; border-collapse:collapse; margin:12px 0; font-size:16px; }
+  table.data th, table.data td { border:1px solid var(--line); padding:8px 10px; text-align:start; vertical-align:top; } table.data th { background:var(--navy); color:#fff; }
+  .formula { background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 16px; font-size:20px; text-align:center; direction:ltr; }
+  .cta { background:#fff; border:2px solid var(--orange); border-radius:14px; padding:16px 20px; margin:28px 0; } .cta a.btn { margin:8px 8px 0 0; }
+  nav.top { text-align:center; padding:8px; background:#fff; border-bottom:1px solid var(--line); font-size:15px; } nav.top a { color:var(--navy); text-decoration:none; font-weight:600; }
+  header.small { padding:18px 20px; } header.small .brand { font-size:34px; font-weight:700; line-height:1.2; letter-spacing:.5px; } header.small a { color:#fff; text-decoration:none; }
+</style>
+</head>
+<body>
+<header class="small"><a href="/"><div class="brand">Bar<span style="color:#f28c28">Flow</span></div></a></header>
+<nav class="top"><a href="/">Home</a> &middot; <a href="/guides/">Guides</a> &middot; <a href="/#pricing-en">Pricing</a></nav>
+<main class="art"><h1>Rebar Bar Bending Schedule Software: How to Choose, With a Real Slab Example</h1><p class="meta">Updated 11 October 2026</p>
+<p>A bar bending schedule (BBS) turns a structural drawing into a list the workshop can cut and bend: for each bar mark, the diameter, the number of bars, the shape, the dimensions, the cutting length and the weight. The software you use decides how many mistakes get into that list and how much steel is wasted when it is cut.</p>
+
+<h2>What the software should do</h2>
+<ol>
+<li><b>Standard shape codes</b> (for example BS 8666) with a drawing of every shape, so a bar cannot be misread.</li>
+<li><b>Cutting length with bend deductions</b>, not just the sum of the dimensions.</li>
+<li><b>Weight per bar and per diameter</b>, with the totals ready for the supplier.</li>
+<li><b>Print-ready sheets</b> and an <b>export to CAD</b> (DXF) so the schedule can go back into the drawing.</li>
+<li><b>A cutting plan</b>: which stock bars to buy and how to cut them with the least waste.</li>
+<li><b>Your language</b> and your units, and a way to check every result by hand.</li>
+</ol>
+
+<h2>The main types of tools</h2>
+<table class="data"><tr><th>Type</th><th>Good for</th><th>Limits</th></tr>
+<tr><td>Excel templates and calculators</td><td>A few bars, quick checks, full control of the formulas</td><td>Easy to break a formula; shapes are usually not drawn; no cutting plan</td></tr>
+<tr><td>BIM and detailing platforms (for example Tekla Structures, Revit, Advance Steel)</td><td>Large projects modelled in 3D, schedules generated from the model</td><td>Heavy to learn and to license; the model must be built first</td></tr>
+<tr><td>Dedicated BBS programs</td><td>Fast schedules from a bar list or drawing data</td><td>Differ widely in shapes, languages and export options</td></tr>
+<tr><td>Cutting-stock (nesting) programs</td><td>Choosing stock lengths and cutting patterns</td><td>Need a clean list of pieces as input</td></tr></table>
+
+<h2>Where BarFlow fits</h2>
+<p><b>BarFlow BBS</b> is an Excel workbook (Windows): type the bar mark, diameter, number of bars and a shape code, and it draws the shape, calculates the cutting length and the weight, prints the schedule and exports a DXF table for AutoCAD. <b>BarFlow Cutting Plan</b> is a separate small Windows program that takes the bar list and plans which stock bars to buy and how to cut them, with waste, weight, cost and a purchase order. Both work offline, have English and Arabic interfaces, and can be tried free. They are not a BIM tool: they do not read a 3D model, and every result should be checked before ordering or cutting steel. See the <a href="/#pricing-en">pricing</a>.</p>
+
+<h2>A real slab: what the stock lengths changed</h2>
+<p>A real ground-floor slab (1,817 bars, about 8.2 tonnes: diameters 10, 12, 14, 16 and 20 mm) was planned three ways with BarFlow Cutting Plan, all with the same bar list:</p>
+<table class="data"><tr><th>Stock lengths allowed</th><th>Bars bought</th><th>Waste</th><th>Steel bought</th></tr>
+<tr><td>12 m only</td><td>985</td><td>23.8%</td><td>10,753 kg</td></tr>
+<tr><td>6, 9 and 12 m</td><td>1,056</td><td>7.2%</td><td>8,873 kg</td></tr>
+<tr><td>4 to 10 m</td><td>1,313</td><td>0.1%</td><td>8,210 kg</td></tr></table>
+<p>The difference between the first and the last plan is about <b>2.5 tonnes of steel</b> for one slab. The trade-off is practical: more different lengths means more pieces to deliver, and 12 m bars need a larger truck and a crane on many sites. The figures are for this project and these lengths only.</p>
+
+<h2>A worked bend deduction</h2>
+<p>A U-bar in 12 mm steel with legs of 1160 mm and a back of 190 mm has two 90&deg; bends. With a deduction of 4 &times; the diameter in total:</p>
+<div class="formula">1160 + 190 + 1160 &minus; 4 &times; 12 = 2462 &rarr; 2460 mm</div>
+<p>Adding the dimensions without the deduction (2510 mm) gives 50 mm too much on every bar; on 108 bars that is more than 5 m of steel. The exact deduction depends on the code you follow, so check yours.</p>
+
+<h2>Frequently asked questions</h2>
+<p><b>What is a bar bending schedule?</b> The table that tells the workshop which bars to cut and bend for each part of the structure.</p>
+<p><b>How is the cutting length of a bent bar calculated?</b> Add the outside dimensions and subtract a deduction for each bend (see the example above).</p>
+<p><b>How can I reduce rebar waste?</b> Plan per diameter, combine pieces from different members and choose stock lengths that fit your pieces (see the slab example, and the <a href="/guides/reduce-rebar-waste-cutting-plan.html">guide to cutting with less waste</a>).</p>
+<p><b>Is there BBS software that works in Excel?</b> Yes, BarFlow BBS (above).</p>
+<p><b>Does it work in Arabic?</b> Yes, both programs have English and Arabic interfaces.</p>
+
+<div class="cta"><b>Try BarFlow</b><p style="margin:6px 0 0">Bar bending schedules in Excel and a rebar cutting plan, in English and Arabic. Both can be tried free.</p><a class="btn" href="/">BarFlow BBS (Excel)</a><a class="btn alt" href="https://apps.microsoft.com/detail/9N9P9HSBWGD3">Cutting Plan (Microsoft Store)</a><a class="btn buynow" style="font-size:16px;padding:11px 24px;margin-top:8px" href="/#pricing-en">Pricing</a></div><p><a href="/guides/">&larr; All guides</a></p></main>
+<footer>BarFlow &middot; <a href="/terms.html">Terms</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/refund.html">Refunds</a> &middot; <a href="https://www.youtube.com/@barflowapp" rel="noopener">YouTube</a> &middot; <a href="https://www.linkedin.com/company/barflowapp" rel="noopener">LinkedIn</a> &middot; <a href="mailto:support@barflowapp.com">support@barflowapp.com</a></footer>
+</body>
+</html>
