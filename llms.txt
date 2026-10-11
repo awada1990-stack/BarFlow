@@ -12,6 +12,7 @@
 - [Bar bending schedule guide](https://barflowapp.com/guides/bar-bending-schedule-guide.html)
 - [Rebar weight and cutting length](https://barflowapp.com/guides/rebar-weight-and-cutting-length.html)
 - [How to cut rebar with less waste](https://barflowapp.com/guides/reduce-rebar-waste-cutting-plan.html)
+- [Arabic version of the guide above](https://barflowapp.com/ar/guides/choosing-rebar-bbs-software.html)
 - Arabic guides: https://barflowapp.com/ar/guides/
 
 ## Facts
