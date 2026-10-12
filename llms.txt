@@ -8,12 +8,18 @@
 - [Pricing](https://barflowapp.com/#pricing-en)
 
 ## Guides
-- [How to choose rebar bar bending schedule software, with a real slab example](https://barflowapp.com/guides/choosing-rebar-bbs-software.html): what to look for; a real 8.2-tonne slab where stock lengths changed the steel bought by about 2.5 tonnes (12 m only: 23.8% waste; 4-10 m: 0.1%).
+- [How to choose rebar bar bending schedule software, with a real slab example](https://barflowapp.com/guides/choosing-rebar-bbs-software.html): what to look for; a real slab of about 8.1 tonnes where stock lengths changed the steel bought by about 2.5 tonnes (12 m only: about 24% waste; 4-10 m: under 0.1%).
 - [Bar bending schedule guide](https://barflowapp.com/guides/bar-bending-schedule-guide.html)
 - [Rebar weight and cutting length](https://barflowapp.com/guides/rebar-weight-and-cutting-length.html)
 - [How to cut rebar with less waste](https://barflowapp.com/guides/reduce-rebar-waste-cutting-plan.html)
 - [Arabic version of the guide above](https://barflowapp.com/ar/guides/choosing-rebar-bbs-software.html)
 - Arabic guides: https://barflowapp.com/ar/guides/
+
+## Videos (real ground-floor slab, about 8,140 kg / 1,557 bars)
+- [Part 1, bar bending schedule from drawing to weights (English)](https://www.youtube.com/watch?v=JN59EYNJuJc): reading bar labels, entering bars in BarFlow BBS, checking weights by hand, bend deduction of a U-bar (2510 → 2460 mm), totals, printing and DXF export. 6:41.
+- [Part 2, cutting plan and waste (English)](https://www.youtube.com/watch?v=QTfI34C2VOI): 12 m bars only gave about 24% waste; lengths from 4 to 10 m gave under 0.1%, about 2,550 kg of steel less. 5:42.
+- Arabic versions: [part 1](https://www.youtube.com/watch?v=hhkhok79NmQ) (7:09), [part 2](https://www.youtube.com/watch?v=vO9CeYX5_L8) (6:04).
+- Results in the videos are for that project only; users must check their own results.
 
 ## Facts
 - Platform: Windows only (BBS runs inside Microsoft Excel). Not a BIM tool: it does not read 3D models.
