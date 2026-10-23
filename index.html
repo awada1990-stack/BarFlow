@@ -219,5 +219,24 @@
   })();
 </script>
 <script data-goatcounter="https://barflow.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- bf-events -->
+<script>
+(function(){
+  function ev(n){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({event:true,path:n,title:n});}catch(e){}}
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a'):null;if(!a)return;
+    var h=a.getAttribute('href')||'',L=(document.documentElement.lang||'en').slice(0,2);
+    if(a.classList.contains('buy')){var m=h.match(/plan=([a-z0-9]+)/);ev('buy-'+(m?m[1]:'x')+'-'+L);}
+    else if(a.classList.contains('buynow'))ev('cta-buy-'+L);
+    else if(a.classList.contains('cpBtn'))ev('get-cuttingplan-store-'+L);
+    else if(a.classList.contains('dl'))ev('download-'+(a.getAttribute('data-file')||'file')+'-'+L);
+    else if(h.indexOf('mailto:')===0)ev('email-'+L);
+    else if(h.indexOf('youtube.com')>-1||h.indexOf('youtu.be')>-1)ev('out-youtube');
+    else if(h.indexOf('linkedin.com')>-1)ev('out-linkedin');
+    else if(h.indexOf('apps.microsoft.com')>-1)ev('out-store');
+    else if(h.indexOf('/guides/')>-1||h.indexOf('guides/')===0)ev('open-guide-'+L);
+  },true);
+})();
+</script>
 </body>
 </html>
