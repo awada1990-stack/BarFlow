@@ -25,7 +25,10 @@
   button:hover { filter:brightness(.95); }
   .box { background:#fff6ec; border:1px solid #f0c9a0; border-radius:10px; padding:10px 14px; margin:12px 0; display:none; }
   footer { text-align:center; color:var(--mute); font-size:14px; padding:0 16px 40px; } footer a { color:var(--navy); }
+  label.plan .p s { color:#7a8699; font-weight:600; margin-right:6px; } label.plan .p .n { color:#c8570a; }
+  label.plan .pb { display:inline-block; background:var(--navy); color:#fff; font-size:12px; font-weight:700; padding:1px 9px; border-radius:999px; margin-left:6px; vertical-align:1px; }
 </style>
+<script src="/promo.js"></script>
 </head>
 <body>
 <header><a href="index.html"><h1>Bar<span>Flow</span></h1></a><div>Buy a licence &middot; شراء ترخيص</div></header>
@@ -73,11 +76,13 @@
     cp100:  "https://barflow.lemonsqueezy.com/checkout/buy/7317ccb2-d761-4fc8-83f6-d14c4bf33227",
     cp300:  "https://barflow.lemonsqueezy.com/checkout/buy/a7c594a6-e222-4036-b941-067d9eca9a28",
     cp1000: "https://barflow.lemonsqueezy.com/checkout/buy/a23297d5-d8e0-4400-82da-806fe7440df2",
-    bundle: "https://barflow.lemonsqueezy.com/checkout/buy/155520b2-ba1c-4e13-a9b0-f5bbba52ec42"
+    bundle: "https://barflow.lemonsqueezy.com/checkout/buy/155520b2-ba1c-4e13-a9b0-f5bbba52ec42",
+    starter: "https://barflow.lemonsqueezy.com/checkout/buy/d9a3240f-5baa-4cf0-bcf2-7800bcb9cb6c"
   };
   // Prices shown here must match what you set in Lemon Squeezy.
   var PLANS = [
     { id: "bundle", name: "Complete package",               desc: "BarFlow BBS 1 year + Cutting Plan 100 runs, one code for both programs", price: "$55" },
+    { id: "starter", name: "Starter bundle",               desc: "BarFlow BBS 6 months + Cutting Plan 50 runs, one code for both programs", price: "$35" },
     { id: "bbs1y",  name: "BarFlow (BBS) – 1 year",    desc: "Printing, DXF export and all shape codes for 12 months", price: "$45" },
     { id: "bbs6m",  name: "BarFlow (BBS) – 6 months",  desc: "Same, for 6 months",                                    price: "$30" },
     { id: "cp100",  name: "Cutting Plan – 100 runs",    desc: "100 optimisation runs",                                price: "$20" },
@@ -90,9 +95,13 @@
   var q = new URLSearchParams(location.search);
   var current = PLANS[0];
 
+  // launch offer (promo.js, expires by itself): the two bundles show the discounted price and get the code at checkout
+  var PROMO = window.BF_PROMO && window.BF_PROMO.active ? window.BF_PROMO : null;
+  function promoFor(id) { return PROMO && PROMO.plans[id] ? PROMO : null; }
   PLANS.forEach(function (p) {
     var l = document.createElement('label'); l.className = 'plan';
-    l.innerHTML = '<input type="radio" name="plan" value="' + p.id + '"><span><b>' + p.name + '</b><br><span class="hint">' + p.desc + '</span></span><span class="p">' + p.price + '</span>';
+    var pr = promoFor(p.id), price = pr ? '<s>' + p.price + '</s><span class="n">' + pr.plans[p.id].now + '</span>' : p.price;
+    l.innerHTML = '<input type="radio" name="plan" value="' + p.id + '"><span><b>' + p.name + '</b>' + (pr ? '<span class="pb">-30% &middot; ' + pr.code + '</span>' : '') + '<br><span class="hint">' + p.desc + '</span></span><span class="p">' + price + '</span>';
     $('plans').appendChild(l);
   });
   function pick(id) {
@@ -125,7 +134,18 @@
       return;
     }
     var parts = ['checkout[email]=' + encodeURIComponent(email), 'checkout[name]=' + encodeURIComponent(name)];
-    var dc = q.get('discount'); if (dc) parts.push('checkout[discount_code]=' + encodeURIComponent(dc));
+    var pr = promoFor(current.id), dc = q.get('discount');
+    if (pr) dc = pr.code;                                  // launch offer: the buyer never types the code
+    if (dc) parts.push('checkout[discount_code]=' + encodeURIComponent(dc));
+    if (current.id === 'bundle' || current.id === 'starter') {
+      // secret token of THIS browser: Lemon Squeezy hands it back to our server with the order, so the thank-you page can show the code to its buyer only
+      var ref = '';
+      try { var a = new Uint8Array(24); crypto.getRandomValues(a); var al = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; for (var i = 0; i < a.length; i++) ref += al.charAt(a[i] % 62); } catch (e) {}
+      if (ref) {
+        try { localStorage.setItem('bf_order', JSON.stringify({ ref: ref, plan: current.id, t: Date.now() })); } catch (e) {}
+        parts.push('checkout[custom][ref]=' + ref);
+      }
+    }
     try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({event:true,path:'checkout-'+current.id,title:'checkout-'+current.id});}catch(e){}
     var go = base + (base.indexOf('?') < 0 ? '?' : '&') + parts.join('&');
     setTimeout(function(){ location.href = go; }, 250);
