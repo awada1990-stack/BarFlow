@@ -6,7 +6,16 @@
   var CODE = 'FEWCM';
   var END = Date.parse('2026-11-15T23:59:59+03:00');
   var PLANS = { bundle: { old: '$55', now: '$38.50' }, starter: { old: '$35', now: '$24.50' } };   // the ONLY two plans the code works for
-  var active = Date.now() < END;
+  // RECORDING MODE: open any page with ?clean=1 (for example https://barflowapp.com/?clean=1) and this browser tab shows
+  // the site WITHOUT any offer (no banner, no strikethrough, normal prices, no code added at checkout) on every page you visit
+  // in that tab. It lasts until the tab is closed (sessionStorage); ?clean=0 switches it off. Nobody else is affected.
+  var clean = false;
+  try {
+    var qm = /[?&]clean=(0|1)(?:&|#|$)/.exec(location.search);
+    if (qm) sessionStorage.setItem('bf_clean', qm[1]);
+    clean = sessionStorage.getItem('bf_clean') === '1';
+  } catch (e) {}
+  var active = !clean && Date.now() < END;
   window.BF_PROMO = { active: active, code: CODE, end: END, plans: PLANS };
   if (!active) return;
 
