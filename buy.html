@@ -101,7 +101,7 @@
   PLANS.forEach(function (p) {
     var l = document.createElement('label'); l.className = 'plan';
     var pr = promoFor(p.id), price = pr ? '<s>' + p.price + '</s><span class="n">' + pr.plans[p.id].now + '</span>' : p.price;
-    l.innerHTML = '<input type="radio" name="plan" value="' + p.id + '"><span><b>' + p.name + '</b>' + (pr ? '<span class="pb">-30% &middot; ' + pr.code + '</span>' : '') + '<br><span class="hint">' + p.desc + '</span></span><span class="p">' + price + '</span>';
+    l.innerHTML = '<input type="radio" name="plan" value="' + p.id + '"><span><b>' + p.name + '</b>' + (pr ? '<span class="pb">-' + pr.pct + '% &middot; ' + pr.code + '</span>' : '') + '<br><span class="hint">' + p.desc + '</span></span><span class="p">' + price + '</span>';
     $('plans').appendChild(l);
   });
   function pick(id) {
